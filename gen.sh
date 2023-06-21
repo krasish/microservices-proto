@@ -2,6 +2,12 @@
 
 SERVICE_NAME=$1
 RELEASE_VERSION=$2
+USER_NAME=$3
+EMAIL=$4
+
+git config user.name "$USER_NAME"
+git config user.email "$EMAIL"
+git fetch --all && git checkout main
 
 sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
 
@@ -18,9 +24,6 @@ go mod init github.com/krasish/microservices-proto/golang/${SERVICE_NAME} || tru
 go mod tidy #D
 
 cd ../../
-
-git config --global user.email "krasishontov@gmail.com"
-git config --global user.name "krasish"
 
 git add . && git commit -am "proto update" || true
 

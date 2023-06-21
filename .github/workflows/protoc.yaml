@@ -26,4 +26,4 @@ jobs:
         shell: bash
         run: |
             chmod +x "${GITHUB_WORKSPACE}/gen.sh" 
-            ./gen.sh ${{ matrix.service }} ${{ env.RELEASE_VERSION }}
+            ./gen.sh ${{ matrix.service }} ${{ env.RELEASE_VERSION }} ${{ github.actor }} ${{ github.actor }}@users.noreply.github.com
